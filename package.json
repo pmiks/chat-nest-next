@@ -1,0 +1,17 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chat-Nest-React",
+  "main": "index.js",
+  "workspaces": {
+    "packages": [
+      "./*"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PMikS",
+  "license": "ISC"
+}
