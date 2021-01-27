@@ -5,8 +5,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity()
-export class IdeaEntity {
+@Entity('user')
+export class UserEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
 
   @CreateDateColumn() created: Date;

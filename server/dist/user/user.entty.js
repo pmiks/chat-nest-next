@@ -9,28 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserEntity = void 0;
+exports.IdeaEntity = void 0;
 const typeorm_1 = require("typeorm");
-let UserEntity = class UserEntity {
+let IdeaEntity = class IdeaEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn('uuid'),
     __metadata("design:type", String)
-], UserEntity.prototype, "id", void 0);
+], IdeaEntity.prototype, "id", void 0);
 __decorate([
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], UserEntity.prototype, "created", void 0);
+], IdeaEntity.prototype, "created", void 0);
 __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
-], UserEntity.prototype, "username", void 0);
+], IdeaEntity.prototype, "username", void 0);
 __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
-], UserEntity.prototype, "password", void 0);
-UserEntity = __decorate([
-    typeorm_1.Entity('user')
-], UserEntity);
-exports.UserEntity = UserEntity;
-//# sourceMappingURL=user.entity.js.map
+], IdeaEntity.prototype, "password", void 0);
+IdeaEntity = __decorate([
+    typeorm_1.Entity()
+], IdeaEntity);
+exports.IdeaEntity = IdeaEntity;
+//# sourceMappingURL=user.entty.js.map

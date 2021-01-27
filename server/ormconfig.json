@@ -5,7 +5,7 @@
   "username": "admin",
   "password": "secret",
   "database": "chat",
-  "synchronize": "true",
-  "logging": "true",
+  "synchronize": true,
+  "logging": true,
   "entities": ["./src/**/*.entity.ts", "./dist/**/*.entity.js"]
 }
