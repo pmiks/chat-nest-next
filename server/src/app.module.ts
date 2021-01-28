@@ -5,10 +5,12 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { HttpErrorFilter } from './shared/http-error.filter';
+import { APP_FILTER } from '@nestjs/core';
 
 @Module({
   imports: [AuthModule, UsersModule, TypeOrmModule.forRoot()],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, { provide: APP_FILTER, useClass: HttpErrorFilter }],
 })
 export class AppModule {}
