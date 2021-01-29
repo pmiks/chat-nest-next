@@ -12,42 +12,50 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
+exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
-const app_service_1 = require("./app.service");
-const auth_service_1 = require("./auth/auth.service");
-const jwt_auth_guard_1 = require("./auth/jwt-auth.guard");
-let AppController = class AppController {
-    constructor(appService, authService) {
-        this.appService = appService;
+const users_dto_1 = require("../users/users.dto");
+const users_service_1 = require("../users/users.service");
+const auth_service_1 = require("./auth.service");
+let AuthController = class AuthController {
+    constructor(usersService, authService) {
+        this.usersService = usersService;
         this.authService = authService;
     }
-    getHello() {
-        return this.appService.getHello();
+    showAllUsers() {
+        return this.usersService.getAllUsers();
     }
-    getProfile(req) {
-        return req.user;
+    login(data) {
+        return this.authService.loginUser(data);
+    }
+    register(data) {
+        return this.authService.register(data);
     }
 };
 __decorate([
-    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
-    common_1.Get(),
+    common_1.Get('auth/users'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getHello", null);
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "showAllUsers", null);
 __decorate([
-    common_1.UseGuards(jwt_auth_guard_1.JwtAuthGuard),
-    common_1.Get('profile'),
-    __param(0, common_1.Request()),
+    common_1.Post('auth/login'),
+    __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "getProfile", null);
-AppController = __decorate([
+], AuthController.prototype, "login", null);
+__decorate([
+    common_1.Post('auth/register'),
+    __param(0, common_1.Body()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "register", null);
+AuthController = __decorate([
     common_1.Controller(),
-    __metadata("design:paramtypes", [app_service_1.AppService,
+    __metadata("design:paramtypes", [users_service_1.UsersService,
         auth_service_1.AuthService])
-], AppController);
-exports.AppController = AppController;
-//# sourceMappingURL=app.controller.js.map
+], AuthController);
+exports.AuthController = AuthController;
+//# sourceMappingURL=auth.controller.js.map

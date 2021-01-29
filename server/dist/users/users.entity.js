@@ -11,7 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersEntity = void 0;
 const typeorm_1 = require("typeorm");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 let UsersEntity = class UsersEntity {
+    async hashPassword() {
+        this.password = await bcrypt.hash(this.password, 10);
+    }
+    toResponseObject(showToken = true) {
+        const { id, created, username, token } = this;
+        const responseObject = { id, created, username };
+        if (showToken) {
+            responseObject.token = token;
+        }
+        return responseObject;
+    }
+    async comparePassword(pass) {
+        return await bcrypt.compare(pass, this.password);
+    }
+    get token() {
+        const { id, username } = this;
+        return jwt.sign({
+            id,
+            username,
+        }, process.env.SECRET, { expiresIn: process.env.EXPIRES_IN });
+    }
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn('uuid'),
@@ -26,7 +49,7 @@ __decorate([
     __metadata("design:type", Date)
 ], UsersEntity.prototype, "update", void 0);
 __decorate([
-    typeorm_1.Column('text'),
+    typeorm_1.Column({ type: 'text', unique: true }),
     __metadata("design:type", String)
 ], UsersEntity.prototype, "username", void 0);
 __decorate([
@@ -37,6 +60,12 @@ __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
 ], UsersEntity.prototype, "name", void 0);
+__decorate([
+    typeorm_1.BeforeInsert(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UsersEntity.prototype, "hashPassword", null);
 UsersEntity = __decorate([
     typeorm_1.Entity('users')
 ], UsersEntity);
