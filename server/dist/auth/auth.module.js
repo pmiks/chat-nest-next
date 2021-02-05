@@ -14,7 +14,6 @@ const users_module_1 = require("../users/users.module");
 const auth_service_1 = require("./auth.service");
 const constants_1 = require("./constants");
 const jwt_strategy_1 = require("./jwt.strategy");
-const local_strategy_1 = require("./local.strategy");
 const users_entity_1 = require("../users/users.entity");
 let AuthModule = class AuthModule {
 };
@@ -28,7 +27,7 @@ AuthModule = __decorate([
             }),
             typeorm_1.TypeOrmModule.forFeature([users_entity_1.UsersEntity]),
         ],
-        providers: [auth_service_1.AuthService, local_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy],
+        providers: [auth_service_1.AuthService, jwt_strategy_1.JwtStrategy],
         exports: [auth_service_1.AuthService, jwt_1.JwtModule],
     })
 ], AuthModule);

@@ -20,45 +20,11 @@ const users_entity_1 = require("./users.entity");
 let UsersService = class UsersService {
     constructor(usersRepository) {
         this.usersRepository = usersRepository;
-        this.users = [
-            {
-                userId: 1,
-                userName: 'Mikhail',
-                password: 'secret',
-            },
-            {
-                userId: 2,
-                userName: 'Elena',
-                password: 'secret',
-            },
-            {
-                userId: 3,
-                userName: 'Sophia',
-                password: 'secret1',
-            },
-        ];
     }
     async findOne(userName) {
-        return this.users.find((user) => user.userName === userName);
     }
     async getAllUsers() {
         return await this.usersRepository.find();
-    }
-    async getUser(id) {
-        return await this.usersRepository.findOne({ id });
-    }
-    async createUser(newUser) {
-        const user = await this.usersRepository.create(newUser);
-        await this.usersRepository.save(user);
-        return user;
-    }
-    async updateUser(id, updateUser) {
-        await this.usersRepository.update({ id }, updateUser);
-        return await this.usersRepository.findOne({ id });
-    }
-    async deleteUser(id) {
-        await this.usersRepository.delete({ id });
-        return { deleted: true };
     }
 };
 UsersService = __decorate([

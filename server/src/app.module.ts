@@ -8,9 +8,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { HttpErrorFilter } from './shared/http-error.filter';
 import { APP_FILTER } from '@nestjs/core';
 import { AuthController } from './auth/auth.controller';
+import { ChatModule } from './chat/chat.module';
+import { ChatGroupModule } from './chatgroup/chatgroup.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, TypeOrmModule.forRoot()],
+  imports: [
+    AuthModule,
+    UsersModule,
+    TypeOrmModule.forRoot(),
+    ChatModule,
+    ChatGroupModule,
+  ],
   controllers: [AppController, AuthController],
   providers: [AppService, { provide: APP_FILTER, useClass: HttpErrorFilter }],
 })

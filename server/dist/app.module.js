@@ -16,11 +16,19 @@ const typeorm_1 = require("@nestjs/typeorm");
 const http_error_filter_1 = require("./shared/http-error.filter");
 const core_1 = require("@nestjs/core");
 const auth_controller_1 = require("./auth/auth.controller");
+const chat_module_1 = require("./chat/chat.module");
+const chatgroup_module_1 = require("./chatgroup/chatgroup.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [auth_module_1.AuthModule, users_module_1.UsersModule, typeorm_1.TypeOrmModule.forRoot()],
+        imports: [
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule,
+            typeorm_1.TypeOrmModule.forRoot(),
+            chat_module_1.ChatModule,
+            chatgroup_module_1.ChatGroupModule,
+        ],
         controllers: [app_controller_1.AppController, auth_controller_1.AuthController],
         providers: [app_service_1.AppService, { provide: core_1.APP_FILTER, useClass: http_error_filter_1.HttpErrorFilter }],
     })

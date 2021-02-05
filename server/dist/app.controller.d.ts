@@ -5,5 +5,4 @@ export declare class AppController {
     private authService;
     constructor(appService: AppService, authService: AuthService);
     getHello(): string;
-    getProfile(req: any): any;
 }

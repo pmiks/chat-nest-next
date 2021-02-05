@@ -45,16 +45,10 @@ let AuthService = class AuthService {
         }
         return null;
     }
-    async login(user) {
-        const payload = { username: user.userName, sub: user.userId };
-        return {
-            access_token: this.jwtService.sign(payload),
-        };
-    }
     async loginUser(data) {
         const { username, password } = data;
         const user = await this.usersRepository.findOne({ where: { username } });
-        if (!user || (await user.comparePassword(password))) {
+        if (!user || !(await user.comparePassword(password))) {
             throw new common_1.HttpException('Invalid username/password', common_1.HttpStatus.BAD_REQUEST);
         }
         return user.toResponseObject();

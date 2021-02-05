@@ -3,13 +3,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  JoinTable,
 } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import { UserAuthDTO } from './users.dto';
-
+import { ChatEntity } from 'src/chat/chat.entity';
+import { ChatGroupEntity } from 'src/chatgroup/chatgroup.entity';
 @Entity('users')
 export class UsersEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
@@ -22,7 +26,14 @@ export class UsersEntity {
 
   @Column('text') password: string;
 
-  @Column('text') name: string;
+  @Column({ type: 'text', default: '' }) name: string;
+
+  @OneToMany((type) => ChatEntity, (chat) => chat.userSend)
+  chat: ChatEntity[];
+
+  @ManyToMany((type) => ChatGroupEntity, (chatGroup) => chatGroup.users)
+  @JoinTable()
+  chatGroup: ChatGroupEntity[];
 
   @BeforeInsert()
   async hashPassword() {
@@ -31,7 +42,7 @@ export class UsersEntity {
 
   toResponseObject(showToken: boolean = true) {
     const { id, created, username, token } = this;
-    const responseObject: UserAuthDTO = { id, created, username };
+    const responseObject: UserAuthDTO = { id, username, created };
     if (showToken) {
       responseObject.token = token;
     }

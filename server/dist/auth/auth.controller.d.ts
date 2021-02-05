@@ -5,7 +5,7 @@ export declare class AuthController {
     private usersService;
     private authService;
     constructor(usersService: UsersService, authService: AuthService);
-    showAllUsers(): Promise<import("../users/users.entity").UsersEntity[]>;
+    showAllUsers(user: any): Promise<import("../users/users.entity").UsersEntity[]>;
     login(data: LoginUserDTO): Promise<import("../users/users.dto").UserAuthDTO>;
     register(data: LoginUserDTO): Promise<import("../users/users.dto").UserAuthDTO>;
 }
