@@ -25,12 +25,16 @@ let ChatGroupService = class ChatGroupService {
     }
     async addNewGroup(uId, data) {
         const user = await this.usersEntity.find({
+            select: ['username', 'name'],
             where: uId.map((i) => ({ id: i })),
         });
         console.log;
         const newGroup = await this.chatGroup.create(Object.assign(Object.assign({}, data), { users: user }));
         await this.chatGroup.save(newGroup);
         return newGroup;
+    }
+    async getUserGroups(uId) {
+        return this.chatGroup.find({ where: { id: uId } });
     }
 };
 ChatGroupService = __decorate([

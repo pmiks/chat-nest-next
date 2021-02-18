@@ -7,7 +7,6 @@ import {
   Put,
   Body,
 } from '@nestjs/common';
-import { ChangeUserDTO } from './users.dto';
 import { UsersService } from './users.service';
 
 @Controller('users')

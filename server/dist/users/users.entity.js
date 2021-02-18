@@ -21,11 +21,14 @@ let UsersEntity = class UsersEntity {
     }
     toResponseObject(showToken = true) {
         const { id, created, username, token } = this;
-        const responseObject = { id, username, created };
+        const responseObject = { username, created };
         if (showToken) {
             responseObject.token = token;
         }
         return responseObject;
+    }
+    getUserName() {
+        return { username: this.username, name: this.name };
     }
     async comparePassword(pass) {
         return await bcrypt.compare(pass, this.password);

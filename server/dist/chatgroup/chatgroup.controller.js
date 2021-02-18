@@ -24,15 +24,27 @@ let ChatGroupController = class ChatGroupController {
     async createNewGroup(uId, data) {
         return await this.chatGroupService.addNewGroup([uId, ...data.users], data);
     }
+    async getAllMyGroups(uId) {
+        return await this.chatGroupService.getUserGroups(uId);
+    }
 };
 __decorate([
     common_1.Post(),
     common_1.UseGuards(new auth_guard_1.AuthGuard()),
-    __param(0, user_decorator_1.User('id')), __param(1, common_1.Body()),
+    __param(0, user_decorator_1.User('id')),
+    __param(1, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], ChatGroupController.prototype, "createNewGroup", null);
+__decorate([
+    common_1.Get(),
+    common_1.UseGuards(new auth_guard_1.AuthGuard()),
+    __param(0, user_decorator_1.User('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ChatGroupController.prototype, "getAllMyGroups", null);
 ChatGroupController = __decorate([
     common_1.Controller('group'),
     __metadata("design:paramtypes", [chatgroup_service_1.ChatGroupService])

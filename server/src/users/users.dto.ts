@@ -1,27 +1,15 @@
-export interface UserDTO {
-  id: string;
-  username: string;
-  password: string;
-  name: string;
-  created: string;
-}
-
 export interface UserAuthDTO {
-  id: string;
+  id?: string;
   username: string;
   created: Date;
   token?: string;
 }
-export interface ChangeUserDTO {
-  username: string;
-  password: string;
-  name: string;
-}
-
 export interface LoginUserDTO {
-  //    @IsNotEmpty()
   username: string;
-  //    @IsNotEmpty()
   password: string;
   name?: string;
+}
+export interface UserDTO {
+  username: string;
+  name: string;
 }

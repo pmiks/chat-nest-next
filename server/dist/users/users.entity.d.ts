@@ -1,4 +1,4 @@
-import { UserAuthDTO } from './users.dto';
+import { UserAuthDTO, UserDTO } from './users.dto';
 import { ChatEntity } from 'src/chat/chat.entity';
 import { ChatGroupEntity } from 'src/chatgroup/chatgroup.entity';
 export declare class UsersEntity {
@@ -12,6 +12,7 @@ export declare class UsersEntity {
     chatGroup: ChatGroupEntity[];
     hashPassword(): Promise<void>;
     toResponseObject(showToken?: boolean): UserAuthDTO;
+    getUserName(): UserDTO;
     comparePassword(pass: string): Promise<boolean>;
     private get token();
 }

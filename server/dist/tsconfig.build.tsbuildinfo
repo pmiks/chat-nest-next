@@ -2526,11 +2526,6 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
-      "../src/users/users.dto.ts": {
-        "version": "4976b15889ba3754cdbedd2ddb9b9f1be73897fb43e58d749d4a2c4724b30ef2",
-        "signature": "97f0ef72292052c7d049ef1a9e4f49f31ca48089f9c6ff409e64419b688eef11",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/bcryptjs/index.d.ts": {
         "version": "9dfe431ab1485e17a6055e186c49da9d23af74b965f2e99f8acc6c958778608f",
         "signature": "9dfe431ab1485e17a6055e186c49da9d23af74b965f2e99f8acc6c958778608f",
@@ -2776,6 +2771,11 @@
         "signature": "f67c920eba6ab8e4558cb9ab661d900188f101c5657e19b1e15829a1d491d46e",
         "affectsGlobalScope": false
       },
+      "../src/users/users.dto.ts": {
+        "version": "cf544084dd1aa29a7b6fb7982869194dd1178cb3031ea3f0cad0b79f3a0ad8a9",
+        "signature": "9f175606f18f634ae6c5ca1a46d05eff2a5ec1abe68be20b374b4f855beba4e2",
+        "affectsGlobalScope": false
+      },
       "../src/chatgroup/chatgroup.entity.ts": {
         "version": "5e6dcba84b5b715bc33201a3c345ac59432ac041b71a2463fe3506fd71d5e65e",
         "signature": "b6b7b9829f9bf4762d4501d57ecabdab64fbeea9bd2924b4e3ddc5a8c4c265c7",
@@ -2787,12 +2787,12 @@
         "affectsGlobalScope": false
       },
       "../src/users/users.entity.ts": {
-        "version": "050e141ba73c3f4550b369a0a53c55794f30d40dc219aa47e794428422e7d23c",
-        "signature": "517ad2eae8a2a96e881470db605c8a13570502523e7ec60104de0d77c8a1bb17",
+        "version": "9b2230f0b54260ae272ee61f9af952c8330e21d91ceb03eb1365fd45096ab105",
+        "signature": "09af47a930cdbf77bffd9943cddb216c10c18dc1df95ccaec6242be4d9b81b0e",
         "affectsGlobalScope": false
       },
       "../src/users/users.service.ts": {
-        "version": "08b6648edb3c976b39576988a25c00ba49a339849a2b3b2975e3ac574deb1d04",
+        "version": "f90e769d55e5ef8ac40da1b0af7782fa76122805e55ede1a597909b202b50b29",
         "signature": "850a03fa8dcaa201212cced401e913a4ef497db4e7f228a68eb08feb7c59d148",
         "affectsGlobalScope": false
       },
@@ -2827,8 +2827,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.service.ts": {
-        "version": "75314f69820cc0d3afd59fd96198b5f8ce6e2652ab1da91f8b5572b1cf062d3d",
-        "signature": "6b45fd63aea0dac083b8a771645c8b7902738623a7bd5d02d11f00edb8443bbb",
+        "version": "9a1311ed9e10843a761941db67679c6656a8d8a05eb77f58772a49b116913768",
+        "signature": "965e90f1e41d4edeace97c5842b365ed3cce10942c563c1368cf875918b32215",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -2937,7 +2937,7 @@
         "affectsGlobalScope": false
       },
       "../src/users/users.controller.ts": {
-        "version": "7296bc2964a7fd154808724bb63647af1c04c4c5414fe1175fe98caa06dc42a9",
+        "version": "fb31406ecf86f9fcb7ab251e059e24cc3c576534aa7a20f99bee017e85888a10",
         "signature": "a75f750f09c5b80a61b6cc879656499bddc4bc32e0dafde2c25e1ef86328daa2",
         "affectsGlobalScope": false
       },
@@ -2967,7 +2967,7 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.module.ts": {
-        "version": "f380fc3190ca33f08c743aca91bc81f2eb34c5a20afc00fbd0855504031edc41",
+        "version": "ad8d7782ad7de854e4c9f9b0ebd77593384b57db111ce9c5d185e39603daaf2a",
         "signature": "a28b5c0c372fb375910b3fe3c3ce4331509bc18ccef7cc39c9ee9d8daf8225d1",
         "affectsGlobalScope": false
       },
@@ -3167,8 +3167,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.controller.ts": {
-        "version": "e675832c065312b2a2255ccb735a4d82acdde6acb53f97cf4238387eb274fadc",
-        "signature": "dc12c0b79640c79efe82989f9a1a4efa777c902cfaf921dc65850ce93c2f213d",
+        "version": "fec02a46cd4c7028ce1bf88380920b7cc36b80951a19d34c6a32473504cf564a",
+        "signature": "0cf98ebe8ff441159842bf4ec05d2b4b3e7a79314dff5b86326af47def09ab41",
         "affectsGlobalScope": false
       },
       "../src/chat/chat.dto.ts": {
@@ -3192,18 +3192,18 @@
         "affectsGlobalScope": false
       },
       "../src/chatgroup/chatgroup.dto.ts": {
-        "version": "4fe0f2d559560491bdf839249c81525d19f1cb62394405d8e47c77f86c4bbe20",
-        "signature": "fc4349761615f8fd63aedbd069bdf6d0048dcfcb9065d51e649fd12b8e4c42d3",
+        "version": "d4c745c0c2f7f43319b03fb89843cc5ad75ff9c7da1f695c1ffbc34b1075d62a",
+        "signature": "4145d08d50101cd08ac0e33c0a4edb465893a67fdf0e2e1db2da44864ae1a25d",
         "affectsGlobalScope": false
       },
       "../src/chatgroup/chatgroup.service.ts": {
-        "version": "e1fd2ba16553069448790b2072b8c9d87e94f85338b235c024732ef5d0feb23b",
-        "signature": "8ed46776097f4ed89c100490d149d81c06c9992a54333a238d815b7c11262552",
+        "version": "3545d61f814360d5a2f22d8b1170424e78d47d109955f7c6913f47d3cec4546b",
+        "signature": "2a22f4693369482b0e3daec90ad9b5426f9b92913db26743a241917dad200e69",
         "affectsGlobalScope": false
       },
       "../src/chatgroup/chatgroup.controller.ts": {
-        "version": "6be94585b84bf61a21a9fdb936c45879b340e8dbfbdc02d8d7838f61a1727eb8",
-        "signature": "a39b4b7160e9853f53651bce34d49f852a59d454bd272a075400f81e6269965c",
+        "version": "ad9353fa7ceb104708447997d861005c112194db8a63e055aca705c3f7921ccf",
+        "signature": "2883ae670fda08f51ed9912b6cf749a71c50d10a4fd8ab47edb22dfe3e6bd9ec",
         "affectsGlobalScope": false
       },
       "../src/chatgroup/chatgroup.module.ts": {
@@ -3219,16 +3219,6 @@
       "../src/main.ts": {
         "version": "fc6cb585a6046da39788587fedc6f2340231f07d4b86dccbd3d2b6d2494f21fd",
         "signature": "5c9cd8ba4f81982e8002c709ba0f6675b7aaf1def7f8a98a9996040a3e1c2bc0",
-        "affectsGlobalScope": false
-      },
-      "../src/auth/local-auth.guard.ts": {
-        "version": "618b02c8fc3858cd651a6fbd5cdae5d33e47404bbd9d028afcd54616dc45a281",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": false
-      },
-      "../src/auth/local.strategy.ts": {
-        "version": "2b23b72918bd9a56c730df90f5a6cf3ec8a5c059351615c5702e9d71652e7431",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -6131,6 +6121,9 @@
         "../src/chatgroup/chatgroup.service.ts",
         "../src/users/user.decorator.ts"
       ],
+      "../src/chatgroup/chatgroup.dto.ts": [
+        "../src/users/users.dto.ts"
+      ],
       "../src/chatgroup/chatgroup.entity.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/chat/chat.entity.ts",
@@ -6165,7 +6158,6 @@
       ],
       "../src/users/users.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/users/users.dto.ts",
         "../src/users/users.service.ts"
       ],
       "../src/users/users.entity.ts": [
@@ -6187,7 +6179,6 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
-        "../src/users/users.dto.ts",
         "../src/users/users.entity.ts"
       ],
       "../../../node_modules/@types/hoist-non-react-statics/index.d.ts": [
@@ -8695,9 +8686,7 @@
       ],
       "../src/auth/auth.controller.ts": [
         "../src/auth/auth.service.ts",
-        "../src/users/users.dto.ts",
-        "../src/users/users.entity.ts",
-        "../src/users/users.service.ts"
+        "../src/users/users.dto.ts"
       ],
       "../src/auth/auth.guard.ts": [
         "../node_modules/@nestjs/common/index.d.ts"
@@ -8733,8 +8722,10 @@
       ],
       "../src/chatgroup/chatgroup.controller.ts": [
         "../src/chatgroup/chatgroup.dto.ts",
-        "../src/chatgroup/chatgroup.entity.ts",
         "../src/chatgroup/chatgroup.service.ts"
+      ],
+      "../src/chatgroup/chatgroup.dto.ts": [
+        "../src/users/users.dto.ts"
       ],
       "../src/chatgroup/chatgroup.entity.ts": [
         "../src/chat/chat.entity.ts",
@@ -9453,8 +9444,6 @@
       "../src/auth/constants.ts",
       "../src/auth/jwt-auth.guard.ts",
       "../src/auth/jwt.strategy.ts",
-      "../src/auth/local-auth.guard.ts",
-      "../src/auth/local.strategy.ts",
       "../src/chat/chat.controller.ts",
       "../src/chat/chat.dto.ts",
       "../src/chat/chat.entity.ts",

@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersEntity } from 'src/users/users.entity';
 import { Repository } from 'typeorm';
-import { LoginUserDTO } from 'src/users/users.dto';
+import { LoginUserDTO, UserAuthDTO } from 'src/users/users.dto';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +15,10 @@ export class AuthService {
     private usersRepository: Repository<UsersEntity>,
   ) {}
 
-  async validateUser(userName: string, pass: string): Promise<any> {
+  async validateUser(
+    userName: string,
+    pass: string,
+  ): Promise<UserAuthDTO | null> {
     const user = await this.usersService.findOne(userName);
     if (user && user.password === pass) {
       const { password, ...result } = user;
@@ -23,14 +26,8 @@ export class AuthService {
     }
     return null;
   }
-  // async login(user: any) {
-  //   const payload = { username: user.userName, sub: user.userId };
-  //   return {
-  //     access_token: this.jwtService.sign(payload),
-  //   };
-  // }
 
-  async loginUser(data: LoginUserDTO) {
+  async loginUser(data: LoginUserDTO): Promise<UserAuthDTO> {
     const { username, password } = data;
     const user = await this.usersRepository.findOne({ where: { username } });
     if (!user || !(await user.comparePassword(password))) {
@@ -42,7 +39,7 @@ export class AuthService {
     return user.toResponseObject();
   }
 
-  async register(data: LoginUserDTO) {
+  async register(data: LoginUserDTO): Promise<UserAuthDTO> {
     const { username } = data;
     let user = await this.usersRepository.findOne({ where: { username } });
     if (user) {
