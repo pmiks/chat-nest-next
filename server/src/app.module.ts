@@ -15,7 +15,17 @@ import { ChatGroupModule } from './chatgroup/chatgroup.module';
   imports: [
     AuthModule,
     UsersModule,
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: "postgres",
+      host: "localhost",
+      port: 5432,
+      username: "admin",
+      password: "secret",
+      database: "chat",
+      synchronize: true,
+      logging: true,
+      entities: ["./dist/**/*.entity.js"]
+    }),
     ChatModule,
     ChatGroupModule,
   ],

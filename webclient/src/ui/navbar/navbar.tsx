@@ -1,6 +1,7 @@
 import { Box } from '../box/box'
 import { useDispatch } from 'react-redux'
 import { setLogoutAC } from '../../redux/auth-reducer'
+
 export default function NavBar() {
   const dispatch = useDispatch()
   const onLogout = () => {
@@ -9,16 +10,14 @@ export default function NavBar() {
 
   return (
     <Box
-      mt="35px"
-      pl="35px"
-      pr="35px"
-      pt="15px"
-      pb="15px"
+      mt="0"
+      py={["115px","15px"]}
+      px={["35px","35px"]}
+      border="1px solid gray"
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
-      backgroundColor="green">
-      {' '}
+      bg="red">
       Hi, you!!
       <button onClick={onLogout}>logout</button>
     </Box>

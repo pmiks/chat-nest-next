@@ -3,19 +3,22 @@ import { Box } from '../box/box'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoginAC, AuthState } from '../../redux/auth-reducer'
 import { useState } from 'react'
+import {useRouter} from 'next/router'
 
 export default function LoginForm({ onLoginClick }) {
   const [user, setUser] = useState<string>()
   const [password, setPassword] = useState<string>()
+
+  const router=useRouter()
 
   return (
     <Box
       mt="35px"
       display="flex"
       flexDirection="column"
-      textAlign="center"
-      borderColor="gray"
-      borderWidth="1px">
+      border="1px solid gray"
+      width="30vw"
+      >
       <div>Экран регистрации</div>
       <LabeledInput
         label={'Логин'}
@@ -29,7 +32,7 @@ export default function LoginForm({ onLoginClick }) {
       />
       <Box mt="35px" display="flex" flexDirection="row" justifyContent="center">
         <button onClick={() => onLoginClick(user, password)}>LOGIN</button>
-        <button onClick={() => onLoginClick(user, password)}>
+        <button onClick={() => router.push('/registration')}>
           REGISTRATION
         </button>
       </Box>

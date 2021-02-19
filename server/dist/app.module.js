@@ -25,7 +25,17 @@ AppModule = __decorate([
         imports: [
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
-            typeorm_1.TypeOrmModule.forRoot(),
+            typeorm_1.TypeOrmModule.forRoot({
+                type: "postgres",
+                host: "localhost",
+                port: 5432,
+                username: "admin",
+                password: "secret",
+                database: "chat",
+                synchronize: true,
+                logging: true,
+                entities: ["./dist/**/*.entity.js"]
+            }),
             chat_module_1.ChatModule,
             chatgroup_module_1.ChatGroupModule,
         ],

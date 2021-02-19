@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import NavBar from '../src/ui/navbar/navbar'
-import LoginForm from '../src/ui/auth/login'
+import LoginForm from '../src/ui/auth/login.screen'
 
 import { Box } from '../src/ui/box/box'
 import { useDispatch, useSelector } from 'react-redux'

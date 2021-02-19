@@ -27,7 +27,7 @@ import {
 import styled, { css } from 'styled-components'
 import { ifProp, prop } from 'styled-tools'
 
-//import { theme } from 'theme/theme'
+//import { theme } from '../../theme/theme'
 
 export type BoxProps = GridProps &
   ColorProps &
