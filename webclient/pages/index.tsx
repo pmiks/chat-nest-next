@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AuthStateType } from '../src/redux/auth-reducer'
 import { loginTC } from '../src/redux/auth-thunks'
 import { Loader } from '../src/ui/Loader/loader'
+import GroupList from '../src/usergroup.form'
+
 export default function Home() {
   const dispatch = useDispatch()
   const isFetching = useSelector(state => state.auth.isFetching)
@@ -21,20 +23,31 @@ export default function Home() {
   )
 
   const isAuth: boolean = useSelector<AuthStateType>(state => state.auth.isAuth)
-
   return (
     <div>
       <NavBar />
-      {isFetching ? (
-        <Loader />
-      ) : isAuth ? (
-        <Box mt="35px" display="flex" flexDirection="column" textAlign="center">
-          <div>Пользователь:{userInfo.user.username}</div>
-          <div>Токен:{userInfo.user.token}</div>
-        </Box>
-      ) : (
-        <LoginForm onLoginClick={onLogin} />
-      )}
+      <Box
+        display="flex"
+        textAlign="center"
+        flexDirection="column"
+        justifyItems="center"
+        justifyContent="center">
+        {isFetching ? (
+          <Loader />
+        ) : isAuth ? (
+          <Box
+            mt="35px"
+            display="flex"
+            flexDirection="column"
+            textAlign="center">
+            <div>Пользователь:{userInfo.user.username}</div>
+            <div>Токен:{userInfo.user.token}</div>
+            <GroupList />
+          </Box>
+        ) : (
+          <LoginForm onLoginClick={onLogin} />
+        )}
+      </Box>
     </div>
   )
 }

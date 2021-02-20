@@ -34,7 +34,7 @@ let ChatGroupService = class ChatGroupService {
         return newGroup;
     }
     async getUserGroups(uId) {
-        return this.chatGroup.find({ where: { id: uId } });
+        return this.chatGroup.find();
     }
 };
 ChatGroupService = __decorate([

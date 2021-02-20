@@ -27,6 +27,6 @@ export class ChatGroupService {
   }
 
   async getUserGroups(uId: string): Promise<GroupDTO[]> {
-    return this.chatGroup.find({ where: { id: uId } });
+    return this.chatGroup.find();
   }
 }

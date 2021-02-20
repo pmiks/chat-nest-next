@@ -10,9 +10,9 @@ export default function NavBar() {
 
   return (
     <Box
-      mt="0"
-      py={["115px","15px"]}
-      px={["35px","35px"]}
+      mt={'0'}
+      py={'15px'}
+      px={'35px'}
       border="1px solid gray"
       display="flex"
       flexDirection="row"

@@ -1,11 +1,12 @@
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
-const AUTH_SERVER = 'http://localhost:4000/'
+const AUTH_SERVER = process.env.SERVER || 'http://localhost:4040/'
 
 const auth = axios.create({
   baseURL: AUTH_SERVER,
-  //  withCredentials: true,
-  //  headers: { Autorization: 'Bearer' },
+  withCredentials: true,
+  //  headers: { Autorization: token ? 'Bearer ' + token : '' },
 })
 
 interface UserData {
@@ -26,5 +27,14 @@ export const authAPI = {
   },
   logout() {
     return auth.get('/auth/logout')
+  },
+}
+
+export const chatAPI = {
+  getUserGroups(token: string) {
+    console.log('Нажато')
+    return auth.get('/group', {
+      headers: { Authorization: 'Bearer ' + token },
+    })
   },
 }
