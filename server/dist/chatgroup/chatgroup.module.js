@@ -13,13 +13,14 @@ const chatgroup_service_1 = require("./chatgroup.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const chatgroup_entity_1 = require("./chatgroup.entity");
 const users_entity_1 = require("../users/users.entity");
+const chatgroup_resolver_1 = require("./chatgroup.resolver");
 let ChatGroupModule = class ChatGroupModule {
 };
 ChatGroupModule = __decorate([
     common_1.Module({
         imports: [typeorm_1.TypeOrmModule.forFeature([chatgroup_entity_1.ChatGroupEntity, users_entity_1.UsersEntity])],
         controllers: [chatgroup_controller_1.ChatGroupController],
-        providers: [chatgroup_service_1.ChatGroupService],
+        providers: [chatgroup_service_1.ChatGroupService, chatgroup_resolver_1.ChatGroupResolver],
     })
 ], ChatGroupModule);
 exports.ChatGroupModule = ChatGroupModule;

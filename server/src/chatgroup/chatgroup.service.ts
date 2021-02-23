@@ -29,4 +29,7 @@ export class ChatGroupService {
   async getUserGroups(uId: string): Promise<GroupDTO[]> {
     return this.chatGroup.find();
   }
+  async getAllGroups(): Promise<GroupDTO[]> {
+    return this.chatGroup.find();
+  }
 }

@@ -1,0 +1,11 @@
+type ChatGroup {
+  id: ID!
+  chatGroupName: String!
+  users:[User]
+  createDate: String!
+  updateDate: String!
+}
+
+type Query{
+    ChatGroups:[ChatGroup]
+}

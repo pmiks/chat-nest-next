@@ -20,9 +20,9 @@ export class UsersService {
     return await this.usersRepository.find();
   }
 
-  // async getUser(id: string) {
-  //   return await this.usersRepository.findOne({ id });
-  // }
+  async getUser(id: string) {
+    return await this.usersRepository.findOne({ id });
+  }
 
   // async createUser(newUser: Partial<ChangeUserDTO>) {
   //   const user = await this.usersRepository.create(newUser);

@@ -1,3 +1,4 @@
+import Cookies from 'js-cookies'
 import { Box } from './ui/box/box'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'

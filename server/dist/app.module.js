@@ -18,6 +18,7 @@ const core_1 = require("@nestjs/core");
 const auth_controller_1 = require("./auth/auth.controller");
 const chat_module_1 = require("./chat/chat.module");
 const chatgroup_module_1 = require("./chatgroup/chatgroup.module");
+const graphql_1 = require("@nestjs/graphql");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -25,6 +26,9 @@ AppModule = __decorate([
         imports: [
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
+            graphql_1.GraphQLModule.forRoot({
+                typePaths: ['./**/*.graphql']
+            }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: "postgres",
                 host: "localhost",

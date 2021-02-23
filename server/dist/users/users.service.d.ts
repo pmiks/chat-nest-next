@@ -6,4 +6,5 @@ export declare class UsersService {
     constructor(usersRepository: Repository<UsersEntity>);
     findOne(userName: string): Promise<User | undefined>;
     getAllUsers(): Promise<UsersEntity[]>;
+    getUser(id: string): Promise<UsersEntity>;
 }

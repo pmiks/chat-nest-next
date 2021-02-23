@@ -10,11 +10,17 @@ import { APP_FILTER } from '@nestjs/core';
 import { AuthController } from './auth/auth.controller';
 import { ChatModule } from './chat/chat.module';
 import { ChatGroupModule } from './chatgroup/chatgroup.module';
+import { GraphQLModule } from '@nestjs/graphql'
+import { join } from 'path';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
+    GraphQLModule.forRoot({
+      typePaths:['./**/*.graphql']
+  //    autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
     TypeOrmModule.forRoot({
       type: "postgres",
       host: "localhost",

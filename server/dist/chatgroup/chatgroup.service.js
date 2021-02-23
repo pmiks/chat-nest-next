@@ -36,6 +36,9 @@ let ChatGroupService = class ChatGroupService {
     async getUserGroups(uId) {
         return this.chatGroup.find();
     }
+    async getAllGroups() {
+        return this.chatGroup.find();
+    }
 };
 ChatGroupService = __decorate([
     common_1.Injectable(),

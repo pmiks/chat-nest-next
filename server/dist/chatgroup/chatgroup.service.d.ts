@@ -8,4 +8,5 @@ export declare class ChatGroupService {
     constructor(chatGroup: Repository<ChatGroupEntity>, usersEntity: Repository<UsersEntity>);
     addNewGroup(uId: string[], data: NewGroupDTO): Promise<GroupDTO>;
     getUserGroups(uId: string): Promise<GroupDTO[]>;
+    getAllGroups(): Promise<GroupDTO[]>;
 }
