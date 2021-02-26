@@ -1,5 +1,6 @@
-import { UserAuthDTO, UserDTO } from './users.dto';
-import { ChatEntity } from 'src/chat/chat.entity';
+import { UserDTO } from './users.dto';
+import { UserAuthDTO } from 'src/auth/auth.dto';
+import { MessagesEntity } from 'src/messages/messages.entity';
 import { ChatGroupEntity } from 'src/chatgroup/chatgroup.entity';
 export declare class UsersEntity {
     id: string;
@@ -8,8 +9,9 @@ export declare class UsersEntity {
     username: string;
     password: string;
     name: string;
-    chat: ChatEntity[];
-    chatGroup: ChatGroupEntity[];
+    email: string;
+    messages: MessagesEntity[];
+    group: ChatGroupEntity[];
     hashPassword(): Promise<void>;
     toResponseObject(showToken?: boolean): UserAuthDTO;
     getUserName(): UserDTO;

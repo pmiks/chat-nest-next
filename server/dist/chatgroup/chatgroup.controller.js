@@ -22,7 +22,7 @@ let ChatGroupController = class ChatGroupController {
         this.chatGroupService = chatGroupService;
     }
     async createNewGroup(uId, data) {
-        return await this.chatGroupService.addNewGroup([uId, ...data.users], data);
+        return await this.chatGroupService.addNewGroup([uId, ...data.users], data.groupName);
     }
     async getAllMyGroups(uId) {
         return await this.chatGroupService.getUserGroups(uId);

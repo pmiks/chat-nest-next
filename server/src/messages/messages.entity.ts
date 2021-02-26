@@ -9,16 +9,16 @@ import {
 } from 'typeorm';
 import { UsersEntity } from '../users/users.entity';
 
-@Entity('chat')
-export class ChatEntity {
+@Entity('messages')
+export class MessagesEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
   @Column('text') message: string;
   @CreateDateColumn()
   createDate: Date;
   @UpdateDateColumn() updateDate: Date;
-  @ManyToOne((type) => UsersEntity, (userSend) => userSend.chat)
-  userSend: UsersEntity;
+  @ManyToOne((type) => UsersEntity, (user) => user.messages)
+  user: UsersEntity;
 
-  @ManyToOne((type) => ChatGroupEntity, (group) => group.chat)
+  @ManyToOne((type) => ChatGroupEntity, (group) => group.messages)
   group: ChatGroupEntity;
 }

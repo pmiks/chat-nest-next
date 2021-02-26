@@ -1,11 +1,12 @@
 import { Body, Controller, Get, Post, UseGuards, Param } from '@nestjs/common';
-import { SendMessageDTO } from './chat.dto';
-import { ChatService } from './chat.service';
+import { SendMessageDTO } from './messages.dto';
+import { MessagesService } from './messages.service';
 import { User } from '../users/user.decorator';
 import { AuthGuard } from '../auth/auth.guard';
+
 @Controller('chat')
 export class ChatController {
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: MessagesService) {}
   @Post()
   @UseGuards(new AuthGuard())
   async sendMessage(@User('id') user, @Body() data: SendMessageDTO) {

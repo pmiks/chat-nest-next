@@ -13,7 +13,10 @@ export class ChatGroupController {
     @User('id') uId: string,
     @Body() data: NewGroupDTO,
   ): Promise<GroupDTO> {
-    return await this.chatGroupService.addNewGroup([uId, ...data.users], data);
+    return await this.chatGroupService.addNewGroup(
+      [uId, ...data.users],
+      data.groupName,
+    );
   }
   @Get()
   @UseGuards(new AuthGuard())

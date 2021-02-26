@@ -1,12 +1,12 @@
 import { UserDTO } from 'src/users/users.dto';
 
 export interface NewGroupDTO {
-  chatGroupName: string;
+  groupName: string;
   users?: string[];
 }
 
 export interface GroupDTO {
-  chatGroupName: string;
+  groupName: string;
   users: UserDTO[];
   id: string;
   createDate: Date;

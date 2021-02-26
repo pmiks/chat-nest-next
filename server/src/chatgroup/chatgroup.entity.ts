@@ -1,4 +1,4 @@
-import { ChatEntity } from 'src/chat/chat.entity';
+import { MessagesEntity } from 'src/messages/messages.entity';
 import { UsersEntity } from 'src/users/users.entity';
 import {
   Column,
@@ -13,10 +13,12 @@ import {
 @Entity('chat_group')
 export class ChatGroupEntity {
   @PrimaryGeneratedColumn('uuid') id: string;
-  @Column('text') chatGroupName: string;
+  @Column('text') groupName: string;
   @CreateDateColumn() createDate: Date;
   @UpdateDateColumn() updateDate: Date;
-  @ManyToMany((type) => UsersEntity, (users) => users.chatGroup)
+
+  @ManyToMany((type) => UsersEntity, (users) => users.group)
   users: UsersEntity[];
-  @OneToMany((type) => ChatEntity, (chat) => chat.group) chat: ChatEntity;
+  @OneToMany((type) => MessagesEntity, (messages) => messages.group)
+  messages: MessagesEntity;
 }

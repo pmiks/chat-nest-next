@@ -11,8 +11,9 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { UserAuthDTO, UserDTO } from './users.dto';
-import { ChatEntity } from 'src/chat/chat.entity';
+import { UserDTO } from './users.dto';
+import { UserAuthDTO } from 'src/auth/auth.dto';
+import { MessagesEntity } from 'src/messages/messages.entity';
 import { ChatGroupEntity } from 'src/chatgroup/chatgroup.entity';
 @Entity('users')
 export class UsersEntity {
@@ -28,12 +29,14 @@ export class UsersEntity {
 
   @Column({ type: 'text', default: '' }) name: string;
 
-  @OneToMany((type) => ChatEntity, (chat) => chat.userSend)
-  chat: ChatEntity[];
+  @Column({ type: 'text', default: '' }) email: string;
 
-  @ManyToMany((type) => ChatGroupEntity, (chatGroup) => chatGroup.users)
+  @OneToMany((type) => MessagesEntity, (messages) => messages.user)
+  messages: MessagesEntity[];
+
+  @ManyToMany((type) => ChatGroupEntity, (group) => group.users)
   @JoinTable()
-  chatGroup: ChatGroupEntity[];
+  group: ChatGroupEntity[];
 
   @BeforeInsert()
   async hashPassword() {
@@ -42,7 +45,7 @@ export class UsersEntity {
 
   toResponseObject(showToken: boolean = true): UserAuthDTO {
     const { id, created, username, token } = this;
-    const responseObject: UserAuthDTO = { username, created };
+    const responseObject: UserAuthDTO = { id, username, created };
     if (showToken) {
       responseObject.token = token;
     }

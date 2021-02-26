@@ -1,11 +1,16 @@
 type ChatGroup {
   id: ID!
   chatGroupName: String!
-  users:[User]
+  users: [User!]
   createDate: String!
   updateDate: String!
 }
 
-type Query{
-    ChatGroups:[ChatGroup]
+type Query {
+  ChatGroups: [ChatGroup!]
+  MyChatGroups: [ChatGroup!]
+}
+
+type Mutation {
+  CreateNewGroup(groupName: String!, users: [String!]): ChatGroup
 }

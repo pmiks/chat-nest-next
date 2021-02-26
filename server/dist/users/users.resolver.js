@@ -34,6 +34,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UsersResolver.prototype, "Users", null);
 __decorate([
+    graphql_1.Query(),
     __param(0, graphql_1.Args('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

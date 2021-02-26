@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChatGroupEntity = void 0;
-const chat_entity_1 = require("../chat/chat.entity");
+const messages_entity_1 = require("../messages/messages.entity");
 const users_entity_1 = require("../users/users.entity");
 const typeorm_1 = require("typeorm");
 let ChatGroupEntity = class ChatGroupEntity {
@@ -22,7 +22,7 @@ __decorate([
 __decorate([
     typeorm_1.Column('text'),
     __metadata("design:type", String)
-], ChatGroupEntity.prototype, "chatGroupName", void 0);
+], ChatGroupEntity.prototype, "groupName", void 0);
 __decorate([
     typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
@@ -32,13 +32,13 @@ __decorate([
     __metadata("design:type", Date)
 ], ChatGroupEntity.prototype, "updateDate", void 0);
 __decorate([
-    typeorm_1.ManyToMany((type) => users_entity_1.UsersEntity, (users) => users.chatGroup),
+    typeorm_1.ManyToMany((type) => users_entity_1.UsersEntity, (users) => users.group),
     __metadata("design:type", Array)
 ], ChatGroupEntity.prototype, "users", void 0);
 __decorate([
-    typeorm_1.OneToMany((type) => chat_entity_1.ChatEntity, (chat) => chat.group),
-    __metadata("design:type", chat_entity_1.ChatEntity)
-], ChatGroupEntity.prototype, "chat", void 0);
+    typeorm_1.OneToMany((type) => messages_entity_1.MessagesEntity, (messages) => messages.group),
+    __metadata("design:type", messages_entity_1.MessagesEntity)
+], ChatGroupEntity.prototype, "messages", void 0);
 ChatGroupEntity = __decorate([
     typeorm_1.Entity('chat_group')
 ], ChatGroupEntity);

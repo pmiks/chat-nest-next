@@ -18,26 +18,41 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const chatgroup_entity_1 = require("./chatgroup.entity");
 const users_entity_1 = require("../users/users.entity");
+const users_dto_1 = require("../users/users.dto");
 let ChatGroupService = class ChatGroupService {
     constructor(chatGroup, usersEntity) {
         this.chatGroup = chatGroup;
         this.usersEntity = usersEntity;
     }
-    async addNewGroup(uId, data) {
-        const user = await this.usersEntity.find({
+    async addNewGroup(uId, groupName) {
+        const users = await this.usersEntity.find({
             select: ['username', 'name'],
             where: uId.map((i) => ({ id: i })),
         });
         console.log;
-        const newGroup = await this.chatGroup.create(Object.assign(Object.assign({}, data), { users: user }));
+        const newGroup = await this.chatGroup.create({
+            groupName,
+            users,
+        });
         await this.chatGroup.save(newGroup);
         return newGroup;
+    }
+    async getUsersInGroup(idGroup) {
+        return await this.usersEntity.find({
+            relations: ['chatGroup'],
+        });
     }
     async getUserGroups(uId) {
         return this.chatGroup.find();
     }
     async getAllGroups() {
         return this.chatGroup.find();
+    }
+    async getMyGroups(id) {
+        return this.chatGroup.find({
+            where: { users: { id: id } },
+            relations: ['users', 'chatGroup'],
+        });
     }
 };
 ChatGroupService = __decorate([

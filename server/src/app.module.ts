@@ -8,9 +8,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { HttpErrorFilter } from './shared/http-error.filter';
 import { APP_FILTER } from '@nestjs/core';
 import { AuthController } from './auth/auth.controller';
-import { ChatModule } from './chat/chat.module';
+import { MessagesModule } from './messages/messages.module';
 import { ChatGroupModule } from './chatgroup/chatgroup.module';
-import { GraphQLModule } from '@nestjs/graphql'
+import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 
 @Module({
@@ -18,21 +18,22 @@ import { join } from 'path';
     AuthModule,
     UsersModule,
     GraphQLModule.forRoot({
-      typePaths:['./**/*.graphql']
-  //    autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      typePaths: ['./**/*.graphql'],
+      context: ({ req }) => ({ headers: req.headers }),
+      //    autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     TypeOrmModule.forRoot({
-      type: "postgres",
-      host: "localhost",
+      type: 'postgres',
+      host: 'localhost',
       port: 5432,
-      username: "admin",
-      password: "secret",
-      database: "chat",
+      username: 'admin',
+      password: 'secret',
+      database: 'chat',
       synchronize: true,
       logging: true,
-      entities: ["./dist/**/*.entity.js"]
+      entities: ['./dist/**/*.entity.js'],
     }),
-    ChatModule,
+    MessagesModule,
     ChatGroupModule,
   ],
   controllers: [AppController, AuthController],

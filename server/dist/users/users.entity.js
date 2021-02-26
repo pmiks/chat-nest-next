@@ -13,7 +13,8 @@ exports.UsersEntity = void 0;
 const typeorm_1 = require("typeorm");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const chat_entity_1 = require("../chat/chat.entity");
+const auth_dto_1 = require("../auth/auth.dto");
+const messages_entity_1 = require("../messages/messages.entity");
 const chatgroup_entity_1 = require("../chatgroup/chatgroup.entity");
 let UsersEntity = class UsersEntity {
     async hashPassword() {
@@ -21,7 +22,7 @@ let UsersEntity = class UsersEntity {
     }
     toResponseObject(showToken = true) {
         const { id, created, username, token } = this;
-        const responseObject = { username, created };
+        const responseObject = { id, username, created };
         if (showToken) {
             responseObject.token = token;
         }
@@ -66,14 +67,18 @@ __decorate([
     __metadata("design:type", String)
 ], UsersEntity.prototype, "name", void 0);
 __decorate([
-    typeorm_1.OneToMany((type) => chat_entity_1.ChatEntity, (chat) => chat.userSend),
-    __metadata("design:type", Array)
-], UsersEntity.prototype, "chat", void 0);
+    typeorm_1.Column({ type: 'text', default: '' }),
+    __metadata("design:type", String)
+], UsersEntity.prototype, "email", void 0);
 __decorate([
-    typeorm_1.ManyToMany((type) => chatgroup_entity_1.ChatGroupEntity, (chatGroup) => chatGroup.users),
+    typeorm_1.OneToMany((type) => messages_entity_1.MessagesEntity, (messages) => messages.user),
+    __metadata("design:type", Array)
+], UsersEntity.prototype, "messages", void 0);
+__decorate([
+    typeorm_1.ManyToMany((type) => chatgroup_entity_1.ChatGroupEntity, (group) => group.users),
     typeorm_1.JoinTable(),
     __metadata("design:type", Array)
-], UsersEntity.prototype, "chatGroup", void 0);
+], UsersEntity.prototype, "group", void 0);
 __decorate([
     typeorm_1.BeforeInsert(),
     __metadata("design:type", Function),

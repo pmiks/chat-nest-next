@@ -16,7 +16,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const http_error_filter_1 = require("./shared/http-error.filter");
 const core_1 = require("@nestjs/core");
 const auth_controller_1 = require("./auth/auth.controller");
-const chat_module_1 = require("./chat/chat.module");
+const messages_module_1 = require("./messages/messages.module");
 const chatgroup_module_1 = require("./chatgroup/chatgroup.module");
 const graphql_1 = require("@nestjs/graphql");
 let AppModule = class AppModule {
@@ -27,20 +27,21 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             users_module_1.UsersModule,
             graphql_1.GraphQLModule.forRoot({
-                typePaths: ['./**/*.graphql']
+                typePaths: ['./**/*.graphql'],
+                context: ({ req }) => ({ headers: req.headers }),
             }),
             typeorm_1.TypeOrmModule.forRoot({
-                type: "postgres",
-                host: "localhost",
+                type: 'postgres',
+                host: 'localhost',
                 port: 5432,
-                username: "admin",
-                password: "secret",
-                database: "chat",
+                username: 'admin',
+                password: 'secret',
+                database: 'chat',
                 synchronize: true,
                 logging: true,
-                entities: ["./dist/**/*.entity.js"]
+                entities: ['./dist/**/*.entity.js'],
             }),
-            chat_module_1.ChatModule,
+            messages_module_1.MessagesModule,
             chatgroup_module_1.ChatGroupModule,
         ],
         controllers: [app_controller_1.AppController, auth_controller_1.AuthController],

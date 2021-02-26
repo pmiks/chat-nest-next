@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersEntity } from 'src/users/users.entity';
 import { Repository } from 'typeorm';
-import { LoginUserDTO, UserAuthDTO } from 'src/users/users.dto';
+import { RegisterUserDTO, LoginUserDTO, UserAuthDTO } from './auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -39,7 +39,15 @@ export class AuthService {
     return user.toResponseObject();
   }
 
-  async register(data: LoginUserDTO): Promise<UserAuthDTO> {
+  async readUser(username: string): Promise<UserAuthDTO> {
+    const user = await this.usersRepository.findOne({ where: { username } });
+    if (!user) {
+      throw new HttpException('Unknown user', HttpStatus.BAD_REQUEST);
+    }
+    return user.toResponseObject(false);
+  }
+
+  async registerUser(data: RegisterUserDTO): Promise<UserAuthDTO> {
     const { username } = data;
     let user = await this.usersRepository.findOne({ where: { username } });
     if (user) {

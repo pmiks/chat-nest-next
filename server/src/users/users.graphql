@@ -1,11 +1,10 @@
-type User{
-  id: ID!
-  username: String!
-  created: String!  
-  token:String
+type User {
+  id: ID
+  username: String
+  created: String
 }
 
-type Query{
-    Users:[User!]
-    User(id:String):User!
+type Query {
+  Users: [User!]
+  User(id: String): User!
 }

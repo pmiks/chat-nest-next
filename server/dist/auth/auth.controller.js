@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const user_decorator_1 = require("../users/user.decorator");
-const users_dto_1 = require("../users/users.dto");
 const users_service_1 = require("../users/users.service");
 const auth_service_1 = require("./auth.service");
 let AuthController = class AuthController {
@@ -26,7 +25,7 @@ let AuthController = class AuthController {
         return await this.authService.loginUser(data);
     }
     async register(data) {
-        return await this.authService.register(data);
+        return await this.authService.registerUser(data);
     }
 };
 __decorate([

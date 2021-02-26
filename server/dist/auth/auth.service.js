@@ -30,7 +30,6 @@ const jwt_1 = require("@nestjs/jwt");
 const typeorm_1 = require("@nestjs/typeorm");
 const users_entity_1 = require("../users/users.entity");
 const typeorm_2 = require("typeorm");
-const users_dto_1 = require("../users/users.dto");
 let AuthService = class AuthService {
     constructor(usersService, jwtService, usersRepository) {
         this.usersService = usersService;
@@ -53,7 +52,14 @@ let AuthService = class AuthService {
         }
         return user.toResponseObject();
     }
-    async register(data) {
+    async readUser(username) {
+        const user = await this.usersRepository.findOne({ where: { username } });
+        if (!user) {
+            throw new common_1.HttpException('Unknown user', common_1.HttpStatus.BAD_REQUEST);
+        }
+        return user.toResponseObject(false);
+    }
+    async registerUser(data) {
         const { username } = data;
         let user = await this.usersRepository.findOne({ where: { username } });
         if (user) {

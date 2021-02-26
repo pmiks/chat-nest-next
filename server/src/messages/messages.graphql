@@ -1,0 +1,20 @@
+type Message {
+  message: String
+  idGroup: String!
+}
+
+type MessageRO {
+  user: User
+  message: String!
+  group: ChatGroup
+  createDate: String!
+  updateDate: String!
+}
+
+type Mutation {
+  SendMessage(message: String!, idGroup: String): MessageRO
+}
+
+type Query {
+  GetMessagesInGroup(idGroup: String): [MessageRO]
+}

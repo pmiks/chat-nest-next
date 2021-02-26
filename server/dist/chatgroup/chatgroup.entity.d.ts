@@ -1,10 +1,10 @@
-import { ChatEntity } from 'src/chat/chat.entity';
+import { MessagesEntity } from 'src/messages/messages.entity';
 import { UsersEntity } from 'src/users/users.entity';
 export declare class ChatGroupEntity {
     id: string;
-    chatGroupName: string;
+    groupName: string;
     createDate: Date;
     updateDate: Date;
     users: UsersEntity[];
-    chat: ChatEntity;
+    messages: MessagesEntity;
 }
